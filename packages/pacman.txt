@@ -59,3 +59,10 @@ zoxide
 zsh
 stow
 openssh
+alsa-utils
+sof-firmware
+pipewire-audio
+bluez
+bluez-utils
+pipewire-pulse
+obsidian
