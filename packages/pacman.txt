@@ -58,3 +58,4 @@ yazi
 zoxide
 zsh
 stow
+openssh
