@@ -24,9 +24,9 @@
 -- See https://wiki.hypr.land/Configuring/Basics/Monitors/
 hl.monitor({
     output   = "",
-    mode     = "1920x1090@60",
+    mode     = "1920x1090",
     position = "auto",
-    scale    = "auto",
+    scale    = "1",
 })
 
 

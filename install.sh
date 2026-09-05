@@ -17,4 +17,5 @@ cd arch
 echo "====== INSTALLING AUR PACKAGES ====="
 yay -S $aur_packages
 
-
+mkdir ~/Pictures
+cp ./wallpapers/wp.jpg ~/Pictures/wp.jpg
