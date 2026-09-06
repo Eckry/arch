@@ -29,3 +29,11 @@ sudo ufw default allow outgoing
 sudo ufw enable
 
 npm install -g sass
+
+git clone https://github.com/aylur/astal.git
+cd astal/lib/battery
+
+meson setup build
+meson install -C build
+
+cd ..

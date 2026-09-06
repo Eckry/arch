@@ -1,20 +1,85 @@
-// https://gitlab.gnome.org/GNOME/gtk/-/blob/gtk-3-24/gtk/theme/Adwaita/_colors-public.scss
-$fg-color: #{"@theme_fg_color"};
-$bg-color: #{"@theme_bg_color"};
+$background: #05292E;
+$background_alt: #0C3935;
+$green_dark: #235744;
+$green: #47835D;
+$green_light: #61A375;
+$accent: #C8E690;
+$text: #D4E994;
 
 window.Bar {
+  background: $background;
+  font-size: 14px;
+
+  .Date > button {
+    background: transparent;
+    border: none;
+    color: $accent;
+    font-weight: bold;
+  }
+
+  .Date > .day.marked {
+    background: red;
+  }
+
+
+  .Date > popover > contents {
+     background: $background_alt;
+     border: none;
+     outline: none;
+     box-shadow: none;
+     padding: 0;
+   }
+
+  .BatteryBox {
+    margin-right: 15px;
+  }
+
+  .BatteryBar {
+    padding: 2px 0 0 0;
+  }
+
+  .BatteryLine {
+    margin: -7px 0;
+    padding: 0;
+    color: $accent;
+    font-weight: bold;
+  }
+
+  .BatteryText {
+    margin-left: 4px;
+    color: $accent;
+    font-weight: bold;
+  }
+}
+
+
+calendar {
+  background: $background_alt;
+  color: $text;
+  border: none;
+}
+
+calendar grid .today {
+  background: $accent;
+  color: $background;
+}
+
+calendar header {
+  background: $green_dark;
+  color: $accent;
+}
+
+calendar button {
   background: transparent;
-  color: $fg-color;
-  font-weight: bold;
+  color: $accent;
+  border: none;
+}
 
-  > centerbox {
-    background: $bg-color;
-    border-radius: 10px;
-    margin: 8px;
-  }
+calendar button:hover {
+  background: $green;
+}
 
-  button {
-    border-radius: 8px;
-    margin: 2px;
-  }
+calendar:selected {
+  background: $accent;
+  color: $background;
 }

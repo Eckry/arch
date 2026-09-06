@@ -42,6 +42,7 @@ local notes = "obsidian"
 hl.on("hyprland.start", function () 
    hl.exec_cmd(terminal)
    hl.exec_cmd("hyprpaper")
+   hl.exec_cmd("ags run ~/.config/ags/app.ts")
  end)
 
 

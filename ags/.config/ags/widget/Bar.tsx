@@ -1,11 +1,16 @@
 import app from "ags/gtk4/app"
 import { Astal, Gtk, Gdk } from "ags/gtk4"
-import { execAsync } from "ags/process"
+import { createBinding } from "ags"
 import { createPoll } from "ags/time"
+import Battery from "gi://AstalBattery"
 
 export default function Bar(gdkmonitor: Gdk.Monitor) {
-  const time = createPoll("", 1000, "date")
+  const time = createPoll("", 1000, () => new Date().toLocaleString())
+
   const { TOP, LEFT, RIGHT } = Astal.WindowAnchor
+
+  const battery = Battery.get_default()
+  const percentage = createBinding(battery, "percentage")
 
   return (
     <window
@@ -18,21 +23,46 @@ export default function Bar(gdkmonitor: Gdk.Monitor) {
       application={app}
     >
       <centerbox cssName="centerbox">
-        <button
+
+
+        <menubutton
+          name="date"
+          class="Date"
           $type="start"
-          onClicked={() => execAsync("echo hello").then(console.log)}
           hexpand
           halign={Gtk.Align.CENTER}
         >
-          <label label="Welcome to AGS!" />
-        </button>
-        <box $type="center" />
-        <menubutton $type="end" hexpand halign={Gtk.Align.CENTER}>
           <label label={time} />
+
           <popover>
             <Gtk.Calendar />
           </popover>
+
         </menubutton>
+
+	<box $type="end" class="BatteryBox" valign={Gtk.Align.CENTER}>
+	  <box
+	    class="BatteryBar"
+	    orientation={Gtk.Orientation.VERTICAL}
+	    valign={Gtk.Align.CENTER}
+	  >
+	    {Array.from({ length: 5 }, (_, i) => (
+	      <label
+		class="BatteryLine"
+		label={percentage.as(p => {
+		  const level = Math.ceil(p * 5)
+		  return i < level ? "━" : " "
+		})}
+	      />
+	    ))}
+	  </box>
+
+	  <label
+	    class="BatteryText"
+	    valign={Gtk.Align.CENTER}
+	    label={percentage.as(p => `${Math.round(p * 100)}%`)}
+	  />
+	</box>
       </centerbox>
     </window>
   )

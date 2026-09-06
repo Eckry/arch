@@ -70,3 +70,9 @@ ntp
 ufw
 fish
 xorg-xcursorgen
+meson 
+vala 
+valadoc 
+json-glib 
+gobject-introspection
+upower
