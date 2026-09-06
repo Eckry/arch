@@ -66,3 +66,5 @@ bluez
 bluez-utils
 pipewire-pulse
 obsidian
+ntp
+ufw
