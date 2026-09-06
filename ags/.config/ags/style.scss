@@ -10,28 +10,29 @@ window.Bar {
   background: $background;
   font-size: 14px;
 
-  .Date > button {
+  .Date>button {
     background: transparent;
     border: none;
     color: $accent;
     font-weight: bold;
   }
 
-  .Date > .day.marked {
+  .Date>.day.marked {
     background: red;
   }
 
 
-  .Date > popover > contents {
-     background: $background_alt;
-     border: none;
-     outline: none;
-     box-shadow: none;
-     padding: 0;
-   }
+  .Date>popover>contents {
+    background: $background_alt;
+    border: none;
+    outline: none;
+    box-shadow: none;
+    padding: 0;
+  }
+
   .Date label {
     font-variant-numeric: tabular-nums;
-}
+  }
 
   .BatteryBox {
     margin-right: 16px;
@@ -87,4 +88,30 @@ calendar button:hover {
 calendar:selected {
   background: $accent;
   color: $background;
+
+}
+
+.volume-container {
+  min-width: 30px;
+  min-height: 30px;
+}
+
+.volume-dot {
+  min-width: 6px;
+  min-height: 6px;
+  border-radius: 50%;
+  background-color: $accent;
+}
+
+.volume-ring {
+  background-color: transparent;
+  border: 2px solid transparent;
+  border-radius: 50%;
+  padding: 1px;
+
+  transition: all 150ms ease-in-out;
+
+  .active {
+    border-color: $accent;
+  }
 }
