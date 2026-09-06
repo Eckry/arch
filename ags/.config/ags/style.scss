@@ -29,20 +29,25 @@ window.Bar {
      box-shadow: none;
      padding: 0;
    }
+  .Date label {
+    font-variant-numeric: tabular-nums;
+}
 
   .BatteryBox {
-    margin-right: 15px;
+    margin-right: 16px;
   }
 
   .BatteryBar {
-    padding: 2px 0 0 0;
+    padding: 1px;
+    border-radius: 2px;
+    border: 1px solid $accent;
   }
 
   .BatteryLine {
-    margin: -7px 0;
-    padding: 0;
-    color: $accent;
-    font-weight: bold;
+    min-width: 8px;
+    min-height: 2px;
+    background: $accent;
+    margin-top: 1px;
   }
 
   .BatteryText {

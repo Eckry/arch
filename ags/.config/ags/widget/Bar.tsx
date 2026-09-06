@@ -22,13 +22,11 @@ export default function Bar(gdkmonitor: Gdk.Monitor) {
       anchor={TOP | LEFT | RIGHT}
       application={app}
     >
-      <centerbox cssName="centerbox">
-
-
+      <centerbox>
         <menubutton
           name="date"
           class="Date"
-          $type="start"
+          $type="center"
           hexpand
           halign={Gtk.Align.CENTER}
         >
@@ -37,32 +35,36 @@ export default function Bar(gdkmonitor: Gdk.Monitor) {
           <popover>
             <Gtk.Calendar />
           </popover>
-
         </menubutton>
 
-	<box $type="end" class="BatteryBox" valign={Gtk.Align.CENTER}>
+	<box
+	  $type="end"
+	  class="BatteryBox"
+	  valign={Gtk.Align.CENTER}
+	>
 	  <box
 	    class="BatteryBar"
 	    orientation={Gtk.Orientation.VERTICAL}
-	    valign={Gtk.Align.CENTER}
 	  >
-	    {Array.from({ length: 5 }, (_, i) => (
-	      <label
-		class="BatteryLine"
-		label={percentage.as(p => {
-		  const level = Math.ceil(p * 5)
-		  return i < level ? "━" : " "
-		})}
-	      />
-	    ))}
+	    {Array.from({ length: 5 }, (_, i) => {
+	      const threshold = (5 - i) / 5
+
+	      return (
+		<box
+		  class="BatteryLine"
+		  opacity={percentage.as(p =>
+		    p >= threshold ? 1 : 0
+		  )}
+		/>
+	      )
+	    })}
 	  </box>
 
 	  <label
 	    class="BatteryText"
-	    valign={Gtk.Align.CENTER}
 	    label={percentage.as(p => `${Math.round(p * 100)}%`)}
 	  />
-	</box>
+</box>
       </centerbox>
     </window>
   )
