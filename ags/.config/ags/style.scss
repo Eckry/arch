@@ -6,6 +6,11 @@ $green_light: #61A375;
 $accent: #C8E690;
 $text: #D4E994;
 
+* {
+  margin: 0;
+  padding: 0;
+}
+
 window.Bar {
   background: $background;
   font-size: 14px;
@@ -88,30 +93,12 @@ calendar button:hover {
 calendar:selected {
   background: $accent;
   color: $background;
-
 }
 
-.volume-container {
-  min-width: 30px;
-  min-height: 30px;
+.color-accent {
+  color: $accent
 }
 
-.volume-dot {
-  min-width: 6px;
-  min-height: 6px;
-  border-radius: 50%;
-  background-color: $accent;
-}
-
-.volume-ring {
-  background-color: transparent;
-  border: 2px solid transparent;
-  border-radius: 50%;
-  padding: 1px;
-
-  transition: all 150ms ease-in-out;
-
-  .active {
-    border-color: $accent;
-  }
+.bold {
+  font-weight: bold;
 }

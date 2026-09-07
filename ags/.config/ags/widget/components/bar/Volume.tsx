@@ -1,21 +1,37 @@
 import Wp from "gi://AstalWp"
-import { createBinding } from "ags"
-import VolumeLine from "./VolumeLine"
+import { createBinding, createMemo, With } from "ags"
+import { VolumeHigh, VolumeLow, VolumeMedium, VolumeMuted } from "../../icons"
 
 export default function Volume() {
   const wp = Wp.get_default()
   const speaker = wp.audio.default_speaker
 
-  const depth = createBinding(speaker, "volume")(
-    (vol) => {
-      const level = Math.round((vol ?? 0) * 5)
-      return Math.max(0, Math.min(5, level))
-    }
-  )
+  const volume = createBinding(speaker, "volume")
+  const mute = createBinding(speaker, "mute")
+
+  const volumeIcon = createMemo(() => {
+    const vol = volume()
+    const isMuted = mute()
+
+    if (isMuted || vol <= 0)
+      return <VolumeMuted />
+    else if (vol <= 0.3)
+      return <VolumeLow />
+    else if (vol <= 0.6)
+      return <VolumeMedium />
+    else
+      return <VolumeHigh />
+  })
 
   return (
-    <box class="volumebox">
-      <VolumeLine depth={depth} maxRings={5} />
+    <box spacing={5}>
+      <With value={volumeIcon}>
+        {(icon) => icon}
+      </With>
+
+      <With value={volume}>
+        {(vol) => <label class="bold color-accent" label={`${Math.round(vol * 100)}%`} />}
+      </With>
     </box>
   )
 }
