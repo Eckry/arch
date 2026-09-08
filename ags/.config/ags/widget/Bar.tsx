@@ -3,6 +3,7 @@ import { Astal, Gdk } from "ags/gtk4"
 import Battery from "./components/bar/Battery"
 import Time from "./components/bar/Time"
 import Volume from "./components/bar/Volume"
+import Workspaces from "./components/bar/Workspaces"
 
 export default function Bar(gdkmonitor: Gdk.Monitor) {
   const { TOP, LEFT, RIGHT } = Astal.WindowAnchor
@@ -20,6 +21,7 @@ export default function Bar(gdkmonitor: Gdk.Monitor) {
     >
       <centerbox>
 
+        <Workspaces />
         <Time />
         <box spacing={15} class="utils" $type="end">
           <Volume />
