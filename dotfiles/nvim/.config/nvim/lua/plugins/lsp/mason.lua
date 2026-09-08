@@ -6,7 +6,7 @@ local servers = {
   "ts_ls",
   "cssls",
   "vtsls",
-  "html"
+  "html",
 }
 
 local settings = {
@@ -21,22 +21,21 @@ local settings = {
   log_level = vim.log.levels.INFO,
   max_concurrent_installers = 4,
 }
+
 require("mason").setup(settings)
+
 require("mason-lspconfig").setup({
   ensure_installed = servers,
-  automatic_installation = true,
+  automatic_enable = false,
 })
 
-local lspconfig_status_ok, lspconfig = pcall(require, "lspconfig")
-if not lspconfig_status_ok then
-  return
-end
+local handlers = require("plugins.lsp.handlers")
 
-for _, server in pairs(servers) do
-  local opts = {
-    on_attach = require("plugins.lsp.handlers").on_attach,
-    capabilities = require("plugins.lsp.handlers").capabilities,
-  }
-  server = vim.split(server, "@")[1]
-  lspconfig[server].setup(opts) -- THIS is what actually registers your on_attach
+for _, server in ipairs(servers) do
+  vim.lsp.config(server, {
+    on_attach = handlers.on_attach,
+    capabilities = handlers.capabilities,
+  })
+
+  vim.lsp.enable(server)
 end

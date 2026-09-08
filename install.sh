@@ -37,3 +37,9 @@ meson setup build
 meson install -C build
 
 cd ..
+cd astal/lib/workspace
+
+meson setup build
+meson install -C build
+
+cd ..
