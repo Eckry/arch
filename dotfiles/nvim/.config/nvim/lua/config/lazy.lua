@@ -31,5 +31,20 @@ require("lazy").setup({
   -- colorscheme that will be used when installing plugins.
   install = { colorscheme = { "habamax" } },
   -- automatically check for plugin updates
-  checker = { enabled = true },
+  -- notify=false: sigue revisando pero sin interrumpirte con avisos
+  checker = { enabled = false }, -- usa :Lazy check cuando quieras
+  change_detection = { notify = false },
+  performance = {
+    rtp = {
+      -- plugins de vim que nvim carga de fabrica y nunca usas
+      disabled_plugins = {
+        "gzip",
+        "tarPlugin",
+        "zipPlugin",
+        "tohtml",
+        "tutor",
+        "netrwPlugin", -- usas nvim-tree
+      },
+    },
+  },
 })
