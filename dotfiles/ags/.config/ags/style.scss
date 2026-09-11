@@ -11,6 +11,18 @@ $text: #D4E994;
   padding: 0;
 }
 
+.numeric {
+  font-variant-numeric: tabular-nums;
+}
+
+.color-accent {
+  color: $accent
+}
+
+.bold {
+  font-weight: bold;
+}
+
 window.Bar {
   background: $background;
   font-size: 14px;
@@ -60,9 +72,9 @@ window.Bar {
     margin-left: 4px;
     color: $accent;
     font-weight: bold;
+    min-width: 45px;
   }
 }
-
 
 calendar {
   background: $background_alt;
@@ -95,12 +107,8 @@ calendar:selected {
   color: $background;
 }
 
-.color-accent {
-  color: $accent
-}
-
-.bold {
-  font-weight: bold;
+.volume-text {
+  min-width: 45px;
 }
 
 .workspace {

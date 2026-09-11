@@ -31,7 +31,7 @@ export default function Battery() {
       </box>
 
       <label
-        class="BatteryText"
+        class="BatteryText numeric"
         label={percentage.as(p => `${Math.round(p * 100)}%`)}
       />
     </box>

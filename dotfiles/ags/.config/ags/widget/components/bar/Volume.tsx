@@ -24,13 +24,13 @@ export default function Volume() {
   })
 
   return (
-    <box spacing={5}>
+    <box>
       <With value={volumeIcon}>
         {(icon) => icon}
       </With>
 
       <With value={volume}>
-        {(vol) => <label class="bold color-accent" label={`${Math.round(vol * 100)}%`} />}
+        {(vol) => <label class="numeric volume-text bold color-accent" label={`${Math.round(vol * 100)}%`} />}
       </With>
     </box>
   )
