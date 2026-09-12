@@ -112,16 +112,13 @@ calendar:selected {
 }
 
 .workspace {
-  border: 2px solid $accent;
   outline: none;
-  background: transparent;
-  border-radius: 50%;
   min-width: 10px;
   min-height: 10px;
-  transition: 0.25s;
+  background: transparent;
+  border: none;
 }
 
 .workspace-active {
-  transition: 0.25s;
-  background: $accent;
+  border-bottom: 3px solid $accent;
 }
