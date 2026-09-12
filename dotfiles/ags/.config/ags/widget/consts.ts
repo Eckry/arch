@@ -5,3 +5,5 @@ export const iconMap = {
   kitty: `${PATH_ASSETS}/terminal.svg`,
   default: `${PATH_ASSETS}/default.svg`
 }
+
+export const BATTERY_CHARGING_STATE = 1

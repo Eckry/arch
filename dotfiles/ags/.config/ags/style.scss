@@ -5,6 +5,7 @@ $green: #47835D;
 $green_light: #61A375;
 $accent: #C8E690;
 $text: #D4E994;
+$yellow: #ffe500;
 
 * {
   margin: 0;
@@ -73,6 +74,10 @@ window.Bar {
     color: $accent;
     font-weight: bold;
     min-width: 45px;
+  }
+
+  .battery-charging {
+    background-color: $yellow;
   }
 }
 
